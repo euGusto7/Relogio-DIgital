@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relógio Digital</title>
+    <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet" type = "text/css">
+    <script>
+        function atualizarHora(){
+            var hoje = new Date();
+            var hora = hoje.getHours();
+            var minutos = hoje.getMinutes();
+            var segundos = hoje.getSeconds();
+            minutos = checkTime(minutos);
+            segundos = checkTime(segundos);
+            document.getElementById('relogio').innerHTML = hora + ":" + minutos + ":" + segundos;
+            var tempo = setTimeout(atualizarHora, 1000);
+        }
+        function checkTime(i){
+            if (i < 10){
+                i = "0" + i;
+            }
+            return i;
+        }
+    </script>
+    <style>
+        
+        body{
+            background: black;
+        }
+
+        #relogio{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            color: #179722;
+            font-family: Orbitron;
+            font-size: 10em;
+            font-weight: bold;
+            letter-spacing: 7px;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body onload="atualizarHora()">
+    <div id="relogio"></div>
+</body>
+</html>
